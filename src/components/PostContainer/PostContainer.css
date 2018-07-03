@@ -1,0 +1,50 @@
+.head {
+    font-size: 12px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.headDet {
+    display: block;
+    float: left;
+}
+
+.externals span {
+    display: block;
+    float: right;
+}
+.FR {
+    margin-right: 10px;
+}
+
+.FL {
+    float: left;
+}
+
+.bodyDet {
+    padding-top: 10px;
+}
+
+.bodyText {
+    font-size: 22px;
+    text-align: left;
+    margin-left: 20px;
+}
+
+.iconCont {
+    height: 100%;
+    float: left;
+}
+
+.postDetails {
+    font-size: 12px;
+}
+
+.reactBtn {
+    float: right;
+    border-radius: 5px;
+    border: none;
+}
+.comments {
+    margin-top: 10px;
+}
