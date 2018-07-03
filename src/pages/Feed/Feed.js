@@ -68,8 +68,12 @@ class Feed extends Component {
                     <div className="row">
                         <p className="mb-2">Top posts </p>
 
+                        {/* These two placeholders will be replaced with a map function */}
+                        <div className="topPosts mb-2">
+                            <PostContainer />
+                        </div>
                         <div className="topPosts">
-                            (Post container in mapped posts)
+                            <PostContainer />
                         </div>
                     </div>
                 </div>
