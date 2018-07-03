@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import PostContainer from "./../../components/PostContainer";
 import "./Feed.css";
 
 const PostPoll = () => {
-    let locationArr = window.location.pathname.split("/");
-    let lastPg = locationArr.length - 1;
+    let locArr = window.location.pathname.split("/");
+    let lastPg = locArr[locArr.length - 1];
     return (
         <div className="ppPills">
             <Link to={window.location.pathname + "/posts"} className="postPoll">
                 <div className={
-                    locationArr[lastPg] === "posts" || locationArr[lastPg] === "feed" ?
+                    lastPg === "posts" || lastPg === "feed" ?
                         "active "
                         :
                         ""
@@ -20,7 +21,7 @@ const PostPoll = () => {
 
             <Link to={window.location.pathname + `/polls`} className="postPoll">
                 <div className={
-                    locationArr[lastPg] === "polls" ?
+                    lastPg === "polls" ?
                         "active "
                         :
                         ""
@@ -45,22 +46,31 @@ class Feed extends Component {
         return (
             <div className="">
                 <div className="col-md-6 mr-auto ml-auto">
-                    <Link to={window.location.pathname + `/new`} className="newPost" onClick={() => console.log("New Post")}>
-                        <div className="start">
+                    <div className="row">
+                        <div className="btn newPost" onClick={() => console.log("New Post")}>
                             <button className="icon"></button>
                             <span className="startInner">Start a conversation</span>
                         </div>
-                    </Link>
-
-                    <PostPoll />
-
-                    <div className="dayPost">
-                        <p className="ml-0">Post of the day</p>
-                        (Post container with one post)
                     </div>
-                    <div className="topPosts">
-                        <p className="">Top posts </p>
-                        (Post container in mapped posts)
+
+                    <div className="row">
+                        <PostPoll />
+                    </div>
+
+                    <div className="row mb-3">
+                        <p className="mb-2">Post of the day</p>
+
+                        <div className="dayPost">
+                            <PostContainer />
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <p className="mb-2">Top posts </p>
+
+                        <div className="topPosts">
+                            (Post container in mapped posts)
+                        </div>
                     </div>
                 </div>
             </div>

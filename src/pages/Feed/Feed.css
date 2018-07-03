@@ -1,35 +1,40 @@
 
-.start {
+.newPost {
     width: 100%;
+    background-color: rgb(255, 255, 255);
+    color: grey;
+    border-radius: 5px;
+    border: none;
+    height: 50px;
     margin: 26px 0px;
     margin-bottom: 10px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 7px;
-    border: none;
-    width: 100%;
-    height: 50px;
 }
 
-.newPost {
-    color: grey;
-}
 .newPost:hover {
     color: lightgrey;
     text-decoration: none;
 }
+
 .icon {
     height: 34px;
     width: 34px;
-    margin: 8px 10px;
+    margin: 2.5px;
+    margin-left: 0px;
+    margin-right: 8px;
     float: left;
     display: block;
     border-radius: 25px;
     border: none;
 }
+
 .startInner {
     float: left;
-    margin: 12px 0px;
+    margin: 7px 0px;
     font-size: 20px;
+}
+
+.ppPills {
+    width: 100%;
 }
 
 .postPoll div {
@@ -47,11 +52,28 @@
 }
 
 .postPoll div.active {
-    color: #3e2b75;
-    border-color: #3e2b75;
+    color: #583ea5;
+    border-color: #583ea5;
 }
 
 .postPoll div:hover {
     color: #3e2b75 ;
     background-color: lightgrey;
+}
+
+.dayPost {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    color: grey;
+    border-radius: 5px;
+    border: none;
+}
+
+.topPosts {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    color: grey;
+    border-radius: 5px;
+    border: none;
+    padding-bottom: 400px;
 }
