@@ -18,16 +18,19 @@ class Nav extends Component {
     }
 
     render() {
+        let locArr = window.location.pathname.split("/");
+        let basePage = locArr[1];
+        // console.log(locArr, basePage);
         return (
             <div className="topnav">
-                <div className="col-md-10 mr-auto ml-auto">
+                <div className="col-md-9 mr-auto ml-auto">
                     <div className="search">
                         <span className="material-icons full">search</span>
                     </div>
 
                     <Link to="/feed" className="link">
                         <div className={
-                            window.location.pathname === "/feed" || window.location.pathname === "/" ?
+                            basePage === "feed" ?
                                 "active tab"
                                 :
                                 "tab"
@@ -39,7 +42,7 @@ class Nav extends Component {
 
                     <Link to="/groups" className="link">
                         <div className={
-                            window.location.pathname === "/groups" ?
+                            basePage === "groups" ?
                                 "active tab"
                                 :
                                 "tab"
