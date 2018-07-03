@@ -26,6 +26,7 @@
 }
 
 .bodyText {
+    color: black;
     font-size: 22px;
     text-align: left;
     margin-left: 20px;
@@ -44,7 +45,37 @@
     float: right;
     border-radius: 5px;
     border: none;
+    color: grey;
 }
+
 .comments {
     margin-top: 10px;
 }
+
+.borderTop {
+    border-top: 1px solid lightgrey;
+}
+
+.iconSmall {
+    height: 26px;
+    width: 26px;
+    margin: 6px 10px;
+    margin-left: 18px;
+    float: left;
+    display: block;
+    border-radius: 25px;
+    border: none;
+}
+
+.comName {
+    width: 450px;
+    font-size: 16px;
+    text-align: left;
+}
+
+.comText {
+    width: 450px;
+    text-align: left;
+    font-size: 12px;
+}
+

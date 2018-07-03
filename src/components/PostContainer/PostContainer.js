@@ -1,27 +1,38 @@
 import React from 'react';
 import "./PostContainer.css"
 
-const PostContainer = (props) => {
+const Comment = (props) => { //Will be used to map out comments
+    return (
+        <div className="mt-2">
+            <div className="iconCont">
+                <button className="iconSmall mr-3 FL">{props.icon}</button>
+            </div>
+            <div className="comName FL">{props.name}</div>
+            <p className="comText FL">{props.text}</p>
+        </div>
+    )
+}
+
+const PostContainer = (props) => { // Place holders will be replaced with prop values
     return (
         <div className="col-md-12">
             <div className="row">
                 <div className="col-md-12 head">
                     <span className="headDet">Racism & Equality</span>
                     <span className="headDet">- today</span>
-                    <span className="externals">
-                        <span className="FR">share</span>
-                        <span className="FR">bookmark</span>
+                    <span className="externals">                        
                         <span className="FR">options</span>
+                        <span className="FR">bookmark</span>
+                        <span className="FR">share</span>
                     </span>
                 </div>
             </div>
-
 
             <div className="row">
                 <div className="col-md-12 bodyDet">
                     <span className="">
                         <div className="iconCont">
-                        <button className="icon mr-3"></button>
+                            <button className="icon mr-3"></button>
                         </div>
                         <p className="bodyText">What is the goal of the Black Lives Matter movement?</p>
                         <div className="postDetails">
@@ -31,11 +42,11 @@ const PostContainer = (props) => {
                         </div>
                     </span>
                 </div>
-                <div className="comments">
+                <div className="comments borderTop">
+                    {/*Will be a replaced with a map function later to post all comments */}
+                    <Comment icon="" name="John Smith" text="I think the point is..."/>
                 </div>
             </div>
-
-
         </div>
     )
 }
