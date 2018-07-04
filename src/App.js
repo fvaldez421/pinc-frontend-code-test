@@ -15,7 +15,7 @@ class App extends Component {
     }
 
     componentDidUpdate() {
-        console.log(this.props.data);
+        // console.log(this.props.data);
     }
 
     render() {
@@ -23,10 +23,10 @@ class App extends Component {
             <div className="App">
                 <Router >
                     <div>
-                        <Nav users={this.props.included} />
+                        <Nav users={this.props.users} />
                         <div className="col-md-12">
                             <Route exact path="/" render={() => (<Redirect to="/feed" />)} />
-                            <Route path="/feed" render={() => (<Feed {...this.props}/>)} />
+                            <Route path="/feed" render={() => (<Feed fetchData={this.props.fetchData} users={this.props.users} posts={this.props.posts}/>)} />
                             {/* <Route path="/groups" component={Groups} />
                             <Route path="/activity" component={Activity} /> */}
                         </div>
@@ -40,11 +40,13 @@ class App extends Component {
 
 App.propTypes = {
     fetchData: PropTypes.func.isRequired,
-    data: PropTypes.object.isRequired
+    users: PropTypes.array.isRequired,
+    posts: PropTypes.array.isRequired
 }
 
 const mapStateToProps = state => ({
-    data: state.data.items
+    users: state.data.items.users,
+    posts: state.data.items.posts
 })
 
 export default connect(mapStateToProps, { fetchData })(App)
