@@ -42,6 +42,8 @@
 }
 
 .reactBtn {
+    padding: 0px 6px;
+    font-size: 12px;
     float: right;
     border-radius: 5px;
     border: none;
@@ -57,9 +59,9 @@
 }
 
 .iconSmall {
-    height: 26px;
-    width: 26px;
-    margin: 6px 10px;
+    height: 30px;
+    width: 30px;
+    margin: 4px 10px;
     margin-left: 18px;
     float: left;
     display: block;
@@ -74,8 +76,36 @@
 }
 
 .comText {
+    margin: 0px;
+    padding: 0px;
     width: 450px;
     text-align: left;
     font-size: 12px;
 }
 
+.addCom:hover {
+    color: lightgrey;
+    text-decoration: none;
+}
+
+.addCom {
+    width: 100%;
+}
+
+.stackedCont{
+    float: left;
+    display: block;
+    margin-left: 14px;
+}
+
+.stacked {
+    height: 30px;
+    width: 30px;
+    margin-left: -10px;
+    float: left;
+    display: block;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    border-radius: 25px;
+}
