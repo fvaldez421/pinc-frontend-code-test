@@ -7,8 +7,16 @@ class Nav extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            search: "",
-            page: "feed"
+            user: {},
+            updated: false,
+            search: ""
+        }
+    }
+    componentDidUpdate() {
+        let user = this.props.users[3];
+        if (this.state.user !== user) {
+            this.setState({ user, updated: true });
+            // console.log(user.attributes)
         }
     }
 
@@ -65,7 +73,12 @@ class Nav extends Component {
                     </Link>
 
                     <button className="btn addPost round">Add Post</button>
-                    <button className="img round"></button>
+                    { this.state.updated ?
+                        (<img src={this.state.user.attributes.avatar_thumb} alt="sorry" className="round img"></img>)
+                        :
+                        (<img src={"https://apinew.pincapp.com/images/default_avatar.png"} alt="sorry" className="round img"></img>)
+                    }
+
                     <input className="round searchBar"
                         name="search"
                         placeholder="Search"
