@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { fetchData } from "../../actions/dataActions";
+import React from 'react';
+// import PropTypes from "prop-types";
+// import { connect } from "react-redux";
+// import { fetchData } from "../../actions/dataActions";
 import { Link } from "react-router-dom";
 import PostContainer from "./../../components/PostContainer";
 import "./Feed.css";
@@ -36,37 +36,15 @@ const PostPollPills = () => {
     )
 }
 
-class Feed extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            updated: false,
-            user: {},
-            posts: []
-        };
-        this.props.fetchData();
-    }
-
-    componentDidUpdate() {
-        let user = this.props.users[3];
-        let posts = this.props.posts;
-        if (this.state.user !== user) {
-            this.setState({ user, posts });
-            setTimeout(() => {
-                this.setState({ updated: true })
-            }, 100);
-        }
-    }
-
-    render() {
+const Feed = (props) => {
+    props.fetchData();
         return (
             <div className="">
                 <div className="col-md-6 mr-auto ml-auto">
                     <div className="row">
                         <div className="btn newPost" onClick={() => console.log("New Post")}>
-                            {this.state.updated ?
-                                (<img src={this.state.user.attributes.avatar_thumb} alt="avatar" className="icon"></img>)
+                            {props.user ?
+                                (<img src={props.user.attributes.avatar_thumb} alt="avatar" className="icon"></img>)
                                 :
                                 (<button className="icon"></button>)
                             }
@@ -82,10 +60,10 @@ class Feed extends Component {
                         <p className="mb-3">Post of the day</p>
                         <div className="dayContainer">
                             {
-                                this.state.updated ?
+                                props.posts[0] ?
                                     (
                                         <div className="dayPost">
-                                            <PostContainer post={this.state.posts[16]} user={this.state.user} />
+                                            <PostContainer post={props.posts[16]} user={props.user} />
                                         </div>
                                     )
                                     :
@@ -98,12 +76,12 @@ class Feed extends Component {
                         <p className="mb-3">Top posts </p>
                         <div className="topContainer mb-5">
                             {
-                                this.state.updated ?
+                                props.posts ?
                                     (
-                                        this.state.posts.map((post, i) => {
+                                        props.posts.map((post, i) => {
                                             return (
                                                 <div key={i} className="topPosts mb-3">
-                                                    <PostContainer post={post} user={this.state.user} />
+                                                    <PostContainer post={post} user={props.user} />
                                                 </div>
                                             )
                                         })
@@ -116,19 +94,20 @@ class Feed extends Component {
                 </div>
             </div>
         )
-    }
+    
 }
 
 
-Feed.propTypes = {
-    fetchData: PropTypes.func.isRequired,
-    users: PropTypes.array.isRequired,
-    posts: PropTypes.array.isRequired
-}
+// Feed.propTypes = {
+//     fetchData: PropTypes.func.isRequired,
+//     users: PropTypes.array.isRequired,
+//     posts: PropTypes.array.isRequired
+// }
 
-const mapStateToProps = state => ({
-    users: state.data.items.users,
-    posts: state.data.items.posts
-})
+// const mapStateToProps = state => ({
+//     users: state.data.items.users,
+//     posts: state.data.items.posts
+// })
 
-export default connect(mapStateToProps, { fetchData })(Feed)
+// export default connect(mapStateToProps, { fetchData })(Feed)
+export default Feed;

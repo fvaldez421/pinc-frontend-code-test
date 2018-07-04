@@ -22,7 +22,16 @@ class App extends Component {
                         <Nav user={this.props.users[3]} />
                         <div className="col-md-12">
                             <Route exact path="/" render={() => (<Redirect to="/feed" />)} />
-                            <Route path="/feed" component={Feed} />
+                            <Route path="/feed"
+                                render={() => (
+                                    <Feed
+                                        users={this.props.users}
+                                        user={this.props.users[3]}
+                                        posts={this.props.posts}
+                                        fetchData={this.props.fetchData}
+                                    />
+                                )}
+                            />
                             {/* <Route path="/groups" component={Groups} />
                             <Route path="/activity" component={Activity} /> */}
                         </div>
@@ -36,11 +45,13 @@ class App extends Component {
 
 App.propTypes = {
     fetchData: PropTypes.func.isRequired,
-    users: PropTypes.array.isRequired
+    users: PropTypes.array.isRequired,
+    posts: PropTypes.array.isRequired
 }
 
 const mapStateToProps = state => ({
-    users: state.data.items.users
+    users: state.data.items.users,
+    posts: state.data.items.posts
 })
 
 export default connect(mapStateToProps, { fetchData })(App)

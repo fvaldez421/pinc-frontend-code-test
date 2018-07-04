@@ -33,7 +33,7 @@ const Nav = (props) => {
     let locArr = window.location.pathname.split("/");
     let basePage = locArr[1];
     let user = props.user;
-    console.log(props);
+    // console.log(props);
     // console.log(locArr, basePage);
     return (
         <div className="topnav">
