@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { fetchData } from "../../actions/dataActions";
 import { Link } from "react-router-dom";
 import PostContainer from "./../../components/PostContainer";
 import "./Feed.css";
@@ -52,9 +55,10 @@ class Feed extends Component {
             this.setState({ user, posts });
             setTimeout(() => {
                 this.setState({ updated: true })
-            }, 50);
+            }, 100);
         }
     }
+
     render() {
         return (
             <div className="">
@@ -115,4 +119,16 @@ class Feed extends Component {
     }
 }
 
-export default Feed;
+
+Feed.propTypes = {
+    fetchData: PropTypes.func.isRequired,
+    users: PropTypes.array.isRequired,
+    posts: PropTypes.array.isRequired
+}
+
+const mapStateToProps = state => ({
+    users: state.data.items.users,
+    posts: state.data.items.posts
+})
+
+export default connect(mapStateToProps, { fetchData })(Feed)

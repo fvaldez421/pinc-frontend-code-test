@@ -9,13 +9,9 @@ import Nav from "./components/Nav";
 import Feed from "./pages/Feed";
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.props.fetchData();
-    }
 
-    componentDidUpdate() {
-        // console.log(this.props.data);
+    componentWillMount() {
+        // this.props.fetchData();
     }
 
     render() {
@@ -23,10 +19,10 @@ class App extends Component {
             <div className="App">
                 <Router >
                     <div>
-                        <Nav users={this.props.users} />
+                        <Nav user={this.props.users[3]} />
                         <div className="col-md-12">
                             <Route exact path="/" render={() => (<Redirect to="/feed" />)} />
-                            <Route path="/feed" render={() => (<Feed fetchData={this.props.fetchData} users={this.props.users} posts={this.props.posts}/>)} />
+                            <Route path="/feed" component={Feed} />
                             {/* <Route path="/groups" component={Groups} />
                             <Route path="/activity" component={Activity} /> */}
                         </div>
@@ -40,13 +36,11 @@ class App extends Component {
 
 App.propTypes = {
     fetchData: PropTypes.func.isRequired,
-    users: PropTypes.array.isRequired,
-    posts: PropTypes.array.isRequired
+    users: PropTypes.array.isRequired
 }
 
 const mapStateToProps = state => ({
-    users: state.data.items.users,
-    posts: state.data.items.posts
+    users: state.data.items.users
 })
 
 export default connect(mapStateToProps, { fetchData })(App)
