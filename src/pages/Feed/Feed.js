@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PostContainer from "./../../components/PostContainer";
 import "./Feed.css";
 
-const PostPoll = () => {
+const PostPollPills = () => {
     let locArr = window.location.pathname.split("/");
     let lastPg = locArr[locArr.length - 1];
     return (
@@ -35,12 +35,25 @@ const PostPoll = () => {
 
 class Feed extends Component {
 
-    componentDidMount(){
-        console.log(this.props)
+    constructor(props) {
+        super(props);
+        this.state = {
+            updated: false,
+            user: {},
+            posts: []
+        };
+        this.props.fetchData();
     }
 
     componentDidUpdate() {
-        console.log(this.props)
+        let user = this.props.users[3];
+        let posts = this.props.posts;
+        if (this.state.user !== user) {
+            this.setState({ user, posts });
+            setTimeout(() => {
+                this.setState({ updated: true })
+            }, 50);
+        }
     }
     render() {
         return (
@@ -48,32 +61,52 @@ class Feed extends Component {
                 <div className="col-md-6 mr-auto ml-auto">
                     <div className="row">
                         <div className="btn newPost" onClick={() => console.log("New Post")}>
-                            <button className="icon"></button>
+                            {this.state.updated ?
+                                (<img src={this.state.user.attributes.avatar_thumb} alt="avatar" className="icon"></img>)
+                                :
+                                (<button className="icon"></button>)
+                            }
                             <span className="startInner">Start a conversation</span>
                         </div>
                     </div>
 
                     <div className="row">
-                        <PostPoll />
+                        <PostPollPills />
                     </div>
 
-                    <div className="row mb-3">
-                        <p className="mb-2">Post of the day</p>
-
-                        <div className="dayPost">
-                            <PostContainer />
+                    <div className="row mb-4">
+                        <p className="mb-3">Post of the day</p>
+                        <div className="dayContainer">
+                            {
+                                this.state.updated ?
+                                    (
+                                        <div className="dayPost">
+                                            <PostContainer post={this.state.posts[16]} user={this.state.user} />
+                                        </div>
+                                    )
+                                    :
+                                    (<div></div>)
+                            }
                         </div>
                     </div>
 
                     <div className="row">
-                        <p className="mb-2">Top posts </p>
-
-                        {/* These two placeholders will be replaced with a map function */}
-                        <div className="topPosts mb-2">
-                            <PostContainer />
-                        </div>
-                        <div className="topPosts">
-                            <PostContainer />
+                        <p className="mb-3">Top posts </p>
+                        <div className="topContainer mb-5">
+                            {
+                                this.state.updated ?
+                                    (
+                                        this.state.posts.map((post, i) => {
+                                            return (
+                                                <div key={i} className="topPosts mb-3">
+                                                    <PostContainer post={post} user={this.state.user} />
+                                                </div>
+                                            )
+                                        })
+                                    )
+                                    :
+                                    (<div></div>)
+                            }
                         </div>
                     </div>
                 </div>
