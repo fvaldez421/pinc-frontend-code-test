@@ -34,14 +34,14 @@ const PostPoll = () => {
 }
 
 class Feed extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            newPost: "",
-            showModal: false
-        }
+
+    componentDidMount(){
+        console.log(this.props)
     }
 
+    componentDidUpdate() {
+        console.log(this.props)
+    }
     render() {
         return (
             <div className="">
@@ -82,4 +82,4 @@ class Feed extends Component {
     }
 }
 
-export default Feed
+export default Feed;
