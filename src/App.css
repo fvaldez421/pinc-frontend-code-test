@@ -3,3 +3,10 @@
   background-color: rgb(230, 230, 230);
 }
 
+.blurred {
+  filter: blur(1.5px);
+  -webkit-filter: blur(1.5px);
+  -moz-filter: blur(1.5px);
+  -o-filter: blur(1.5px);
+  -ms-filter: blur(1.5px);
+}
