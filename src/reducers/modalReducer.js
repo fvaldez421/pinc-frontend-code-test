@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
                 modalStatus: action.modalStatus
             }
         case CLOSE_MODAL: 
-            console.log("Close Modal Reducer")
+            // console.log("Close Modal Reducer")
             return {
                 ...state,
                 modalStatus: action.modalStatus

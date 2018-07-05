@@ -50,7 +50,7 @@ class PostModal extends Component {
         this.props.sendPost(this.state);
         setTimeout(() => {
             this.props.closeModal();
-        }, 500);
+        }, 300);
     }
     render() {
         return (
