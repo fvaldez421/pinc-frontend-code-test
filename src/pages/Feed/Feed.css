@@ -10,6 +10,14 @@
     margin-bottom: 10px;
 }
 
+.dayContainer {
+    width: 100%;
+}
+
+.topContainer {
+    width: 100%
+}
+
 .newPost:hover {
     color: lightgrey;
     text-decoration: none;
