@@ -1,0 +1,56 @@
+.postModal {
+    height: 10rem;
+    /* width: 600px; */
+    margin-top: 75px;
+    z-index: 10000;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.postModDetail {
+    padding: 2px;
+    font-size: 14px;
+    color: #583ea5;
+}
+
+.addGroup:hover {
+    color: #3e2b75;
+    background-color: lightgrey;
+    border-radius: 3px;
+}
+
+.postInput {
+    height: 2.5rem;
+    width: 31rem;
+    font-size: 18px;
+    color: grey;
+    border: none;
+    margin-top: 0px;
+}
+
+.postInput ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: grey;
+    opacity: 1; /* Firefox */
+}
+
+.postInput :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: grey;
+}
+
+.postInput ::-ms-input-placeholder { /* Microsoft Edge */
+    color: grey;
+}
+
+.lowerCont {
+    height: 30px;
+    width: 31rem;
+    margin: 28px 0px;
+}
+
+.postSubmit {
+    margin: 0px!important;
+    background-color: #583ea5;
+    color: white;
+    padding: 2px 16px;
+    font-size: 14px;
+}

@@ -1,10 +1,12 @@
 import React from 'react';
-// import PropTypes from "prop-types";
-// import { connect } from "react-redux";
-// import { fetchData } from "../../actions/dataActions";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { renderModal } from "../../actions/modalActions";
 import { Link } from "react-router-dom";
 import PostContainer from "./../../components/PostContainer";
 import "./Feed.css";
+
+
 
 const PostPollPills = () => {
     let locArr = window.location.pathname.split("/");
@@ -37,12 +39,13 @@ const PostPollPills = () => {
 }
 
 const Feed = (props) => {
-    props.fetchData();
+    // props.fetchData();
+    // console.log(props);
         return (
             <div className="">
                 <div className="col-md-6 mr-auto ml-auto">
                     <div className="row">
-                        <div className="btn newPost" onClick={() => console.log("New Post")}>
+                        <div className="btn newPost" onClick={() => props.renderModal("NewPost")}>
                             {props.user ?
                                 (<img src={props.user.attributes.avatar_thumb} alt="avatar" className="icon"></img>)
                                 :
@@ -98,16 +101,16 @@ const Feed = (props) => {
 }
 
 
-// Feed.propTypes = {
-//     fetchData: PropTypes.func.isRequired,
-//     users: PropTypes.array.isRequired,
-//     posts: PropTypes.array.isRequired
-// }
+Feed.propTypes = {
+    renderModal: PropTypes.func.isRequired,
+    modalStatus: PropTypes.string.isRequired
+    // users: PropTypes.array.isRequired,
+    // posts: PropTypes.array.isRequired
+}
 
-// const mapStateToProps = state => ({
-//     users: state.data.items.users,
-//     posts: state.data.items.posts
-// })
+const mapStateToProps = state => ({
+    modalStatus: state.modalStatus.modalStatus
+})
 
-// export default connect(mapStateToProps, { fetchData })(Feed)
-export default Feed;
+export default connect(mapStateToProps, { renderModal })(Feed)
+// export default Feed;
