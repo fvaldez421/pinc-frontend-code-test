@@ -1,7 +1,39 @@
-import React from 'react';
-import "./PostContainer.css"
+import React, { Component } from 'react';
+import { Popover } from "reactstrap";
+import "./PostContainer.css";
+
+import ReactComment from "./../ReactComment";
 
 const placeholder = "I think pizza is the best for the following reasons: it's delicious, it's full of carbs for tomorrow's workout and -oh yeah, it's delicious..."
+
+class OptionsPop extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            popActive: false,
+        };
+        this.togglePop = this.togglePop.bind(this);
+    }
+
+    togglePop() {
+        // console.log(!this.state.popActive);
+        this.setState({ popActive: !this.state.popActive })
+    }
+    render() {
+        let post_id = "Opt" + this.props.post.id;
+        return (
+            <span onClick={this.togglePop}>
+                <span className="material-icons FR" id={post_id}>more_horiz</span>
+                <Popover placement="top" isOpen={this.state.popActive} target={post_id} toggle={this.togglePop}>
+                    <li className="btn material-icons options">share</li>
+                    <li className="btn material-icons options">bookmark</li>
+                    <li className="btn material-icons options">report</li>
+                </Popover>
+            </span>
+        )
+    }
+}
+
 
 const Comment = (props) => { //Will be used to map out comments
     return (
@@ -20,24 +52,24 @@ const Comment = (props) => { //Will be used to map out comments
     )
 }
 
-const PostContainer = (props) => { // Place holders will be replaced with prop values
+const PostContainer = (props) => {
+    // Place holders will be replaced with prop values
+    //  console.log(props)
     return (
         <div className="col-md-12">
             <div className="row">
                 <div className="col-md-12 head">
                     <span className="headDet">{props.post.attributes.question_type}</span>
                     <span className="headDet">- today</span>
-                    <span className="externals">
-                        <span className="FR">options</span>
-                        <span className="FR">bookmark</span>
-                        <span className="FR">share</span>
+                    <span className="btn externals">
+                        <OptionsPop {...props} />
                     </span>
                 </div>
             </div>
 
             <div className="row">
                 <div className="col-md-12 bodyDet">
-                    <span className="">
+                    <div className="">
                         <div className="iconCont">
                             {props.post.attributes.author_info.avatar_thumb ?
                                 (<img src={props.post.attributes.author_info.avatar_thumb} alt="avatar" className="icon"></img>)
@@ -72,9 +104,11 @@ const PostContainer = (props) => { // Place holders will be replaced with prop v
                                         )
                                 }
                             </span>
-                            <button className="btn mt-1 FR reactBtn">React</button>
                         </div>
-                    </span>
+                    </div>
+                    <div className="row reaction">
+                        <ReactComment {...props} />
+                    </div>
                 </div>
 
                 {
