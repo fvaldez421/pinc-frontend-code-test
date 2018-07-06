@@ -62,7 +62,7 @@ App.propTypes = {
 const mapStateToProps = state => ({
     users: state.data.items.users,
     posts: state.data.items.posts,
-    modalStatus: state.modalStatus.modalStatus
+    modalStatus: state.modal.modalStatus
 })
 
 export default connect(mapStateToProps, { fetchData })(App);
