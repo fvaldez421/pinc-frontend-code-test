@@ -2,6 +2,7 @@
     font-size: 12px;
     width: 100%;
     margin-top: 10px;
+    height: 16px;
 }
 
 .headDet {
@@ -28,19 +29,21 @@
 }
 
 .bodyDet {
-    padding-top: 10px;
+    padding-top: 6px;
 }
 
 .bodyText {
     color: black;
     font-size: 22px;
     text-align: left;
-    margin-left: 20px;
 }
 
 .iconCont {
     height: 100%;
-    float: left;
+}
+
+.noMarg {
+    margin: 0px;
 }
 
 .postDetails {
@@ -57,7 +60,7 @@
 }
 
 .comments {
-    margin-top: 10px;
+    padding: 4px 0px;
 }
 
 .borderTop {
@@ -76,7 +79,7 @@
 }
 
 .comName {
-    width: 450px;
+    width: 86%;
     font-size: 16px;
     text-align: left;
 }
@@ -84,7 +87,7 @@
 .comText {
     margin: 0px;
     padding: 0px;
-    width: 450px;
+    width: 86%;
     text-align: left;
     font-size: 12px;
 }
@@ -114,29 +117,6 @@
     border-width: 2px;
     border-color: white;
     border-radius: 25px;
-}
-
-.reaction {
-    float: none;
-    width: 100%;
-}
-
-.reactPills {
-    color: rgb(175, 174, 174);
-    width: 50%;
-    padding: 10px 0px;
-    margin: 6px 0px;
-    margin-bottom: 0px;
-    float: left;
-    border-radius: 3px;
-}
-
-.reactPills:hover {
-    background-color: lightgrey;
-}
-
-.pillCont {
-    margin: 0px 32%;
 }
 
 .options {

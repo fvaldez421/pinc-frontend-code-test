@@ -43,22 +43,22 @@
 }
 
 .addPost {
-    height: 34px;
-    width: 100px;
+    height: 32px;
+    width: 90px;
     background-color: white;
     color: #583ea5;
     padding: 0px;
-    margin: 8px 10px;
+    margin: 9px 0px;
 }
 
 .img {
     height: 28px;
     width: 28px;
-    margin: 11px;
+    margin: 11px 0px;
 }
 
 .round {
-    float: right;
+    /* float: right; */
     display: block;
     border-radius: 25px;
     border: none;
@@ -66,18 +66,18 @@
 
 .searchBar {
     height: 28px;
-    width: 260px;
-    margin: 11px;
+    width: 56%;
+    margin: 11px 0px;
     background-color: #3e2b75;
     color: white;
     text-align: center;
 }
 
-.topnav div:hover {
+.pills div:hover {
     background-color: #3e2b75;
 }
 
-.topnav div.active {
+.pills div.active {
     border-bottom: 2px solid white;
 }
 

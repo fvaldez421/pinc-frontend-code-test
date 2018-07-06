@@ -1,0 +1,17 @@
+.reactPills {
+    color: rgb(175, 174, 174);
+    width: 100%;
+    padding: 10px 0px;
+    margin: 6px 0px;
+    margin-bottom: 0px;
+    float: left;
+    border-radius: 3px;
+}
+
+.reactPills:hover {
+    background-color: lightgrey;
+}
+
+.pillCont {
+    width: 100px;
+}

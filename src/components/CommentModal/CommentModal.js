@@ -56,27 +56,31 @@ class PostModal extends Component {
             <Overlay onOverlayClick={this.onOverlayClick}>
                 <div className="col-md-6 mr-auto ml-auto" onClick={(e) => this.onDialogClick(e)}>
                     <div className="row postModal">
-                        <div className="col-md-12 head">
-                            <div className="iconCont">
-                                {
-                                    this.props.user ?
-                                        (<img src={this.props.user.attributes.avatar_thumb} alt="icon" className="iconSmall ml-0 FL"></img>)
-                                        :
-                                        (<button className="iconSmall ml-0 FL"></button>)
-                                }
-                            </div>
-                            <p className="postModDetail FL mt-2 mb-1">{this.props.user.attributes.name}</p>
-                            <span className="btn closeBtn FR" onClick={() => this.props.closeModal()}>X</span>
-                            <input
-                                className="postInput ml-auto mr-auto FL"
-                                name="text"
-                                placeholder={`Reply to "${this.props.post.attributes.text}"`}
-                                value={this.state.text}
-                                onChange={this.handleInputChange}
-                            />
-                            <div className="lowerCont FR">
-                                <button className="btn FR postSubmit" name="submit" onClick={(e) => this.handleFormSubmit(e)}>Comment</button>
-                               
+                        <div className="col-md-12 body">
+                            <div className="row mt-2">
+                                <div className="col-md-1">
+                                    {
+                                        this.props.user ?
+                                            (<img src={this.props.user.attributes.avatar_thumb} alt="icon" className="iconSmall ml-0 FL"></img>)
+                                            :
+                                            (<button className="iconSmall ml-0 FL"></button>)
+                                    }
+                                </div>
+                                <div className="col-md-11">
+                                    <p className="postModDetail FL mt-2 mb-1">{this.props.user.attributes.name}</p>
+                                    <span className="btn closeBtn FR" onClick={() => this.props.closeModal()}>X</span>
+
+                                    <input
+                                        className="postInput FL"
+                                        name="text"
+                                        placeholder={`Reply to "${this.props.post.attributes.text}"`}
+                                        value={this.state.text}
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <div className="lowerCont FR">
+                                        <button className="btn FR postSubmit" name="submit" onClick={(e) => this.handleFormSubmit(e)}>Comment</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

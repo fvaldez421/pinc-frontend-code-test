@@ -37,13 +37,13 @@ class OptionsPop extends Component {
 
 const Comment = (props) => { //Will be used to map out comments
     return (
-        <div className="mt-2">
+        <div className="mt-1 col-md-12">
             <div className="iconCont">
                 {
                     props.imgUrl ?
-                        (<img src={props.imgUrl} alt="icon" className="iconSmall mr-3 FL"></img>)
+                        (<img src={props.imgUrl} alt="icon" className="iconSmall FL noMarg ml-0 mr-3"></img>)
                         :
-                        (<button className="iconSmall mr-3 FL"></button>)
+                        (<button className="iconSmall FL noMarg ml-0 mr-3"></button>)
                 }
             </div>
             <div className="comName FL">{props.name}</div>
@@ -69,44 +69,46 @@ const PostContainer = (props) => {
 
             <div className="row">
                 <div className="col-md-12 bodyDet">
-                    <div className="">
-                        <div className="iconCont">
+                    <div className="row">
+                        <div className="col-sm-1 iconCont">
                             {props.post.attributes.author_info.avatar_thumb ?
-                                (<img src={props.post.attributes.author_info.avatar_thumb} alt="avatar" className="icon"></img>)
+                                (<img src={props.post.attributes.author_info.avatar_thumb} alt="avatar" className="icon mr-3"></img>)
                                 :
                                 (<button className="icon"></button>)
                             }
                         </div>
-                        <p className="bodyText">{props.post.attributes.text}</p>
-                        <div className="postDetails">
-                            <span className="FL mt-1">{"Posted by " + props.post.attributes.author_info.name}</span>
-                            <span className="FL mt-1 ml-1">Comments by</span>
-                            <span className="stackedCont">
-                                {
-                                    props.post.attributes.latest_answerers_info[0] ?
-                                        (
-                                            props.post.attributes.latest_answerers_info.map((user, i) => {
-                                                let imgUrl = user.avatar_thumb;
-                                                // console.log(imgUrl)
-                                                return (
-                                                    <img key={i} src={imgUrl} alt="whoops" className="stacked"></img>
-                                                )
-                                            })
-                                        )
-                                        :
-                                        (
-                                            <span>
-                                                <button className="stacked"></button>
-                                                <button className="stacked"></button>
-                                                <button className="stacked"></button>
-                                                <button className="stacked"></button>
-                                            </span>
-                                        )
-                                }
-                            </span>
+                        <div className="col-sm-11">
+                            <p className="bodyText mt-2 mb-2">{props.post.attributes.text}</p>
+                            <div className="postDetails">
+                                <span className="FL mt-1 mr-2">{"Posted by " + props.post.attributes.author_info.name}</span>
+                                <span className="FL mt-1 ml-1">Comments by</span>
+                                <span className="stackedCont">
+                                    {
+                                        props.post.attributes.latest_answerers_info[0] ?
+                                            (
+                                                props.post.attributes.latest_answerers_info.map((user, i) => {
+                                                    let imgUrl = user.avatar_thumb;
+                                                    // console.log(imgUrl)
+                                                    return (
+                                                        <img key={i} src={imgUrl} alt="whoops" className="stacked"></img>
+                                                    )
+                                                })
+                                            )
+                                            :
+                                            (
+                                                <span>
+                                                    <button className="stacked"></button>
+                                                    <button className="stacked"></button>
+                                                    <button className="stacked"></button>
+                                                    <button className="stacked"></button>
+                                                </span>
+                                            )
+                                    }
+                                </span>
+                            </div>
                         </div>
                     </div>
-                    <div className="row reaction">
+                    <div className="row reaction mb-2">
                         <ReactComment {...props} />
                     </div>
                 </div>
@@ -133,19 +135,6 @@ const PostContainer = (props) => {
                         )
                 }
 
-                <div className="addCom borderTop">
-                    <div className="mt-0 mb-0">
-                        <div className="iconCont">
-                            {
-                                props.user.attributes.avatar_thumb ?
-                                    (<img src={props.user.attributes.avatar_thumb} alt="icon" className="iconSmall mr-3 FL"></img>)
-                                    :
-                                    (<button className="iconSmall mr-3 FL"></button>)
-                            }
-                        </div>
-                        <p className="btn comText FL mt-2">Share your thoughts</p>
-                    </div>
-                </div>
             </div>
         </div>
     )
