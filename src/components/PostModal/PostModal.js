@@ -9,7 +9,8 @@ class PostModal extends Component {
         this.state = {
             group: "",
             text: "",
-            anonymous: false
+            anonymous: false,
+            user: this.props.user
         }
         this.listenKeyboard = this.listenKeyboard.bind(this);
         this.onOverlayClick = this.onOverlayClick.bind(this);

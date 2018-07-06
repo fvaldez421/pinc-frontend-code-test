@@ -47,7 +47,7 @@ const Feed = (props) => {
             <div className="">
                 <div className="col-md-6 mr-auto ml-auto">
                     <div className="row">
-                        <div className="btn newPost" onClick={() => props.renderModal("NewPost")}>
+                        <div className="btn newPost" onClick={() => props.renderModal("NewPost", props.user)}>
                             {props.user ?
                                 (<img src={props.user.attributes.avatar_thumb} alt="avatar" className="icon mr-2"></img>)
                                 :
