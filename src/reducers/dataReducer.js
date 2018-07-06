@@ -1,4 +1,4 @@
-import { FETCH_DATA, SEND_POST } from "../actions/types";
+import { FETCH_DATA, SEND_POST, SEND_COMMENT, SEND_REACTION } from "../actions/types";
 
 const initialState = {
     items: {
@@ -20,6 +20,16 @@ export default (state = initialState, action) => {
                 }
             }
         case SEND_POST: 
+            return {
+                ...state,
+                status: action.data
+            }
+        case SEND_COMMENT: 
+            return {
+                ...state,
+                status: action.data
+            }
+        case SEND_REACTION: 
             return {
                 ...state,
                 status: action.data

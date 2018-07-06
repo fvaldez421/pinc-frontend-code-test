@@ -1,7 +1,8 @@
 import { RENDER_MODAL, CLOSE_MODAL } from "../actions/types";
 
 const initialState = {
-    modalStatus: "closed"
+    modalStatus: "closed",
+    post: {}
 }
 
 export default (state = initialState, action) => {
@@ -11,7 +12,8 @@ export default (state = initialState, action) => {
             // console.log(action);
             return {
                 ...state,
-                modalStatus: action.modalStatus
+                modalStatus: action.modalStatus,
+                post: action.post
             }
         case CLOSE_MODAL: 
             // console.log("Close Modal Reducer")

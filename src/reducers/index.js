@@ -4,5 +4,5 @@ import modalReducer from "./modalReducer";
 
 export default combineReducers ({
     data: dataReducer,
-    modalStatus: modalReducer
+    modal: modalReducer
 });
