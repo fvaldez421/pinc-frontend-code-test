@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { renderModal } from "../../actions/modalActions";
 import { Link } from "react-router-dom";
+
+import { renderModal } from "./../../actions/modalActions";
+import { sendReaction } from "./../../actions/dataActions";
 import PostContainer from "./../../components/PostContainer";
 import "./Feed.css";
 
@@ -66,7 +68,7 @@ const Feed = (props) => {
                                 props.posts[0] ?
                                     (
                                         <div className="dayPost">
-                                            <PostContainer post={props.posts[16]} user={props.user} />
+                                            <PostContainer post={props.posts[16]} {...props} />
                                         </div>
                                     )
                                     :
@@ -84,7 +86,7 @@ const Feed = (props) => {
                                         props.posts.map((post, i) => {
                                             return (
                                                 <div key={i} className="topPosts mb-3">
-                                                    <PostContainer post={post} user={props.user} />
+                                                    <PostContainer post={post} {...props} />
                                                 </div>
                                             )
                                         })
@@ -103,14 +105,18 @@ const Feed = (props) => {
 
 Feed.propTypes = {
     renderModal: PropTypes.func.isRequired,
+    sendReaction: PropTypes.func.isRequired,
     modalStatus: PropTypes.string.isRequired
-    // users: PropTypes.array.isRequired,
-    // posts: PropTypes.array.isRequired
 }
 
 const mapStateToProps = state => ({
-    modalStatus: state.modalStatus.modalStatus
+    modalStatus: state.modal.modalStatus
 })
 
-export default connect(mapStateToProps, { renderModal })(Feed)
+const mapDispatchToProps = {
+    renderModal,
+    sendReaction
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Feed)
 // export default Feed;
